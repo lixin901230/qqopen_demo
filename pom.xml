@@ -38,6 +38,11 @@
 	  	<artifactId>standard</artifactId>
 	  	<version>1.1.2</version>
 	</dependency>
+	<dependency>
+		<groupId>jstl</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
   
   	<!-- zxing二维码图片生成及解析依赖 -->
 	<dependency>  
