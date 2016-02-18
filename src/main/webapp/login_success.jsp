@@ -7,10 +7,6 @@
 	<title>腾讯开放平台接入测试</title>
 </head>
 <body>
-	李鑫——腾讯开放平台接入测试
-	<br/>
-	<div>
-		<a href="login.do">请使用你的QQ账号登陆</a>
-	</div>
+	<div style="font-size: 24px; margin-left: 30%;">恭喜通过qq登录成功，进入李鑫的腾讯qq互联测试网站</div>
 </body>
 </html>
