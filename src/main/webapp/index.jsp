@@ -9,10 +9,9 @@
 <body style="margin-left: 40%; margin-top: 10%;">
 	腾讯开放平台——》qq互联——》qq登录——》接入测试
 	<div>
-		点击qq登录图片登录：
-<!-- 		<a href="login.do"> -->
-			<img onclick="toLogin();" src="${pageContext.request.contextPath}/resource/images/qq_login_logo/qq_login_img4/Connect_logo_7.png" title="使用qq登录"/>
-<!-- 		</a> -->
+		<!-- <a href="login.do">请使用你的QQ账号登陆</a><br/> -->
+		点击qq登录图片登录：<img onclick="toLogin();" src="${pageContext.request.contextPath}/resource/images/qq_login_logo/qq_login_img4/Connect_logo_7.png" title="使用qq登录"/>
+		
 	</div>
 	
 	<script type="text/javascript">
