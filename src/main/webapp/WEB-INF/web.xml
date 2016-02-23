@@ -7,10 +7,10 @@
 	
   	<display-name>qqopen_demo</display-name>
   	<welcome-file-list>
-<!--   		<welcome-file>index.html</welcome-file> -->
-  		<welcome-file>index.jsp</welcome-file>
+  		<welcome-file>index.html</welcome-file>
   	</welcome-file-list>
-  
+  	
+  	<!-- 官方Demo begin -->
 	<servlet>
        	<servlet-name>login</servlet-name>
        	<servlet-class>com.lx.qqopen.connect.demo.IndexServlet</servlet-class>
@@ -19,7 +19,7 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>/login.do</url-pattern>
 	</servlet-mapping>
-
+	
 	<servlet>
 		<servlet-name>afterlogin</servlet-name>
 		<servlet-class>com.lx.qqopen.connect.demo.AfterLoginRedirectServlet</servlet-class>
@@ -28,8 +28,7 @@
 		<servlet-name>afterlogin</servlet-name>
 		<url-pattern>/afterlogin.do</url-pattern>
 	</servlet-mapping>
-
-
+	
 	<servlet>
 		<servlet-name>shuoshuo</servlet-name>
 		<servlet-class>com.lx.qqopen.connect.demo.ShuoShuoServlet</servlet-class>
@@ -38,4 +37,26 @@
 		<servlet-name>shuoshuo</servlet-name>
 		<url-pattern>/shuoshuo.do</url-pattern>
 	</servlet-mapping>
+	<!-- 官方Demo end -->
+	
+	<!-- My Demo begin -->
+	<servlet>
+		<servlet-name>qqAuthorize</servlet-name>
+		<servlet-class>com.lx.qqopen.connect.QQAuthServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>qqAuthorize</servlet-name>
+		<url-pattern>/qqAuthorize.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>qqAuthCallback</servlet-name>
+		<servlet-class>com.lx.qqopen.connect.QQAuthCallbackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>qqAuthCallback</servlet-name>
+		<url-pattern>/qqAuthCallback.do</url-pattern>
+	</servlet-mapping>
+	<!-- My Demo end -->
+	
 </web-app>

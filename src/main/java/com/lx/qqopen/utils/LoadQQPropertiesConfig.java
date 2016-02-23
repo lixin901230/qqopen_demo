@@ -1,4 +1,4 @@
-package com.lx.qqopen.util;
+package com.lx.qqopen.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
