@@ -8,6 +8,7 @@ public class AccessToken {
 
 	private String token;
 	private int expiresIn;
+	private String refreshToken;
 	
 	public AccessToken() {
 		
@@ -17,6 +18,13 @@ public class AccessToken {
 		this.token = token;
 		this.expiresIn = expiresIn;
 	}
+	
+	public AccessToken(String token, int expiresIn, String refreshToken) {
+		this.token = token;
+		this.expiresIn = expiresIn;
+		this.refreshToken = refreshToken;
+	}
+
 	public String getToken() {
 		return token;
 	}
@@ -28,6 +36,13 @@ public class AccessToken {
 	}
 	public void setExpiresIn(int expiresIn) {
 		this.expiresIn = expiresIn;
+	}
+	public String getRefreshToken() {
+		return refreshToken;
+	}
+
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
 	}
 	
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lx.qqopen.connect.core.DispatchServletSupport;
+import com.lx.qqopen.utils.CommonUtils;
 import com.lx.qqopen.utils.LoadQQPropertiesConfig;
 import com.lx.qqopen.utils.QQConnectURLConst;
 
@@ -32,11 +33,13 @@ public class QQAuthServlet extends DispatchServletSupport {
 		try {
 			String redirect_URI = URLEncoder.encode(QQConnectURLConst.redirect_URI_bak(), "UTF-8");
 			String authorizeUrl = QQConnectURLConst.authorizeURL();
-			String url = authorizeUrl+ "?response_type=code" 
+			String state = CommonUtils.uuid();
+			String url = authorizeUrl+ "?response_type=code"  
 					+ "&client_id="+ APP_ID 
-					+ "&state=state" 
+					+ "&state="+ state 
 					+ "&redirect_uri="+ redirect_URI 
 					+ "&scope="+ QQConnectURLConst.scope();
+			request.getSession().setAttribute("qq_connect_state", state);	//用于第三方应用防止CSRF攻击
 			response.sendRedirect(url);
 		} catch (IOException e) {
 			e.printStackTrace();
