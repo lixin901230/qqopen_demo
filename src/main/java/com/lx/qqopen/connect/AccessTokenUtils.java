@@ -2,11 +2,14 @@ package com.lx.qqopen.connect;
 
 import java.net.URLEncoder;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import net.sf.json.JSONObject;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.spi.LoggerFactory;
 
@@ -47,7 +50,8 @@ public class AccessTokenUtils {
 	 */
 	public static void main(String[] args) {
 		String code = "";
-		AccessToken accessToken = getAccessToken(code);
+		String state = "";
+		AccessToken accessToken = getAccessToken(code, state);
 		System.out.println(accessToken.getToken());
 	}
 	
@@ -56,8 +60,8 @@ public class AccessTokenUtils {
 	 * @param code 授权code
 	 * @return
 	 */
-	public static String getToken(String code) {
-		return getAccessToken(code).getToken();
+	public static String getToken(String code, String state) {
+		return getAccessToken(code, state).getToken();
 	}
 	
 	/**
@@ -65,7 +69,7 @@ public class AccessTokenUtils {
 	 * @param code 授权code
 	 * @return
 	 */
-	public static AccessToken getAccessToken(String code) {
+	public static AccessToken getAccessToken(String code, String state) {
 		
 		AccessToken accessToken = new AccessToken();
 		
@@ -84,7 +88,7 @@ public class AccessTokenUtils {
 					+ "&client_id="+ APP_ID
 					+ "&client_secret="+ APP_KEY
 					+ "&code="+ code
-					+ "&state="+ CommonUtils.uuid()
+					+ "&state="+ state
 					+ "&redirect_uri="+ URLEncoder.encode(QQConnectURLConst.redirect_URI(), "UTF-8");
 				
 //				Map<String, String> parameter = new HashMap<String, String>();
@@ -96,19 +100,33 @@ public class AccessTokenUtils {
 //				GetMethod method = HttpClientUtil.getMethod(url, parameter);
 				HttpClient httpClient = new HttpClient();
 				GetMethod method = new GetMethod(url);
-				int state = httpClient.executeMethod(method);
-				if(state == 200) {
+				int httpState = httpClient.executeMethod(method);
+				if(httpState == 200) {
 					String respBodyStr = method.getResponseBodyAsString();
-					JSONObject jsonObject = JsonUtil.strToJson(respBodyStr);
-					if(jsonObject.has("access_token")) {
+					logger.info("\n>>>>>>获取到的access_token串："+respBodyStr);//access_token=B4D1D3B2039C8A03A83F44AE973061AA&expires_in=7776000&refresh_token=724D50630503A11D8106158F9B4DB48F
+					
+					String access_token = "";
+					int expires_in = 0;
+					String refresh_token = "";
+					Matcher m = Pattern.compile("^access_token=(\\w+)&expires_in=(\\w+)&refresh_token=(\\w+)$").matcher(respBodyStr);
+			   		if (m.find()) {
+			   			access_token = m.group(1);
+			   			expires_in = Integer.parseInt(m.group(2));
+			   			refresh_token = m.group(3);
+			   		} else {
+			   			Matcher m2 = Pattern.compile("^access_token=(\\w+)&expires_in=(\\w+)$").matcher(respBodyStr);
+				        if (m2.find()) {
+				        	access_token = m2.group(1);
+				        	expires_in = Integer.parseInt(m2.group(2));
+				        }
+			   		}
+					if(StringUtils.isNotEmpty(access_token)) {
 						
-						String token = jsonObject.getString("access_token");
-						String expiresInStr = jsonObject.getString("expires_in");
-						accessToken = new AccessToken(token, NumberUtil.strToInteger(expiresInStr));
+						accessToken = new AccessToken(access_token, expires_in, refresh_token);
 						
 						CacheUtils.put(ACCESS_TOKEN_CACHE_KEY, accessToken, 6480000);	//缓存AccessToken对象，由于access_token有效期为7776000秒（3个月），故此处缓存有效期为6480000秒（两个半月）
 					} else {
-						throw new Exception("获取access_token失败，原因："+jsonObject.toString());
+						throw new Exception("获取access_token失败，原因："+respBodyStr);
 					}
 				}
 				

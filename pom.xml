@@ -10,10 +10,9 @@
   
   <!-- 变量属性配置 -->
   <properties>
-  	<finalName>weixin</finalName>
+  	<finalName>qqopen_demo</finalName>
   	<classpath>src/main/webapp/WEB-INF/classes</classpath>
   	<libOutputDirectory>src/main/webapp/WEB-INF/lib</libOutputDirectory>
-  	<org.springframework.version>4.1.6.RELEASE</org.springframework.version>
   	<org.slf4j.version>1.7.9</org.slf4j.version>
   	<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
   	<jdk.version>1.6</jdk.version>
@@ -34,28 +33,18 @@
 	  	<version>2.5</version>
 	</dependency>
 	<dependency>
-	  	<groupId>taglibs</groupId>
-	  	<artifactId>standard</artifactId>
-	  	<version>1.1.2</version>
-	</dependency>
-	<dependency>
 		<groupId>jstl</groupId>
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
 	</dependency>
-  
-  	<!-- zxing二维码图片生成及解析依赖 -->
-	<dependency>  
-		<groupId>com.google.zxing</groupId>  
-		<artifactId>core</artifactId>  
-		<version>2.2</version>
-		<!-- <version>3.2.0</version> -->
-	</dependency>  
-	<dependency>  
-		<groupId>com.google.zxing</groupId>  
-		<artifactId>javase</artifactId>  
-		<version>2.2</version>  
-		<!-- <version>3.2.0</version> -->  
+	
+	<!-- 本地jar包依赖引入   QQ互联SDK jar -->
+	<dependency>
+	    <groupId>com.qq.connect.Sdk4J</groupId>
+	    <artifactId>Sdk4J</artifactId>
+	    <version>2.0</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/Sdk4J.jar</systemPath>
 	</dependency>
 	
 	<!-- xml 依赖 -->
@@ -89,20 +78,6 @@
 		<groupId>commons-httpclient</groupId>
 		<artifactId>commons-httpclient</artifactId>
 		<version>3.0.1</version>
-	</dependency>
-	
-	<!-- 数据库连接 -->
-	<dependency>
-	  <groupId>mysql</groupId>
-	  <artifactId>mysql-connector-java</artifactId>
-	  <version>5.1.9</version>
-	</dependency>
-	
-	<!-- 连接池 -->
-	<dependency>
-	  <groupId>c3p0</groupId>
-	  <artifactId>c3p0</artifactId>
-	  <version>0.9.1.2</version>
 	</dependency>
 	
 	<!-- 工具包 依赖 -->
@@ -162,108 +137,6 @@
 	  <groupId>org.slf4j</groupId>
 	  <artifactId>slf4j-jdk14</artifactId>
 	  <version>${org.slf4j.version}</version>
-	</dependency>
-	
-	<!-- springframework 依赖 -->
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-context</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-webmvc-portlet</artifactId>
-	  <version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-webmvc</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-beans</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-core</artifactId>
-		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-aop</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-web</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-tx</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-jdbc</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-context-support</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-test</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-expression</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-websocket</artifactId>
-	  <version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-messaging</artifactId>
-	  <version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-jms</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-aspects</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-oxm</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-orm</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-instrument</artifactId>
-  		<version>${org.springframework.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-  		<artifactId>spring-instrument-tomcat</artifactId>
-  		<version>${org.springframework.version}</version>
 	</dependency>
 	
   </dependencies>
