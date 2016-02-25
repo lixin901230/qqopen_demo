@@ -15,7 +15,7 @@
   	<libOutputDirectory>src/main/webapp/WEB-INF/lib</libOutputDirectory>
   	<org.slf4j.version>1.7.9</org.slf4j.version>
   	<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
-  	<jdk.version>1.6</jdk.version>
+  	<jdk.version>1.7</jdk.version>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
