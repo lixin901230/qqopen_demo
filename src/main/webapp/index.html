@@ -4,13 +4,120 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta property="qc:admins" content="45652176076410163263756367117056" />
 	<title>腾讯开放平台接入测试</title>
+	<style type="text/css">
+		.tit {font-weight: bold; padding-bottom: 5px;}
+		.m_t50 {margin-top: 50px;}
+		.m_r40 {margin-right: 40px;}
+		.f_left {float: left;}
+		.f_right {float: right;}
+		.photo {width:300px; height:187px; margin-bottom: 5px;}
+	</style>
 </head>
-<body style="margin-left: 40%; margin-top: 10%;">
-	腾讯开放平台接入测试
-	<br/>
+<body style="margin-left: 30%; margin-top: 3%;">
+	
 	<div>
-		集成方式1：<a href="demo.jsp">使用QQ互联提供的SDK包集成QQ登录 Demo</a><br/>
-		集成方式2：<a href="myDemo.jsp">根据QQ登录OAuth2.0协议，自主开发集成QQ登录（我的Demo）</a>
+		<h3>一、腾讯开放平台接入测试</h3>
+		<div>
+			集成方式1：<a href="demo.jsp">使用QQ互联提供的SDK包集成QQ登录 Demo</a><br/>
+			集成方式2：<a href="myDemo.jsp">根据QQ登录OAuth2.0协议，自主开发集成QQ登录（我的Demo）</a>
+		</div>
+	</div>
+	
+	
+	<div class="m_t50">
+		<h3>二、网页分享组件</h3>
+		<div class="f_left m_r40">
+			<div class="tit">1)、百度分享：</div>
+			<div>
+				<!-- 注意：class="BSHARE_IMAGE_NO"为了屏蔽bShare分享组件的图片分享功能，避免在图片中出现两个图片分享组件的分享按钮，单独使用百度分享时不需要 -->
+				<img src="incoming/meinv.jpg" data-tag="baiduShare" class="photo BSHARE_IMAGE_NO"/><br/>
+				<img src="incoming/thumb_music.jpg" data-tag="baiduShare2" class="photo BSHARE_IMAGE_NO"/>
+			</div>
+			<div id="baidu_share">
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_qzone" data-cmd="qzone"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq"></a>
+					<a href="#" class="bds_renren" data-cmd="renren"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+					<a href="#" class="bds_huaban" data-cmd="huaban"></a>
+					<a href="#" class="bds_mail" data-cmd="mail"></a>
+					<a href="#" class="bds_youdao" data-cmd="youdao"></a>
+					<a href="#" class="bds_more" data-cmd="more"></a>
+					<a class="bds_count" data-cmd="count"></a>
+				</div>
+				<script type="text/javascript">
+					window._bd_share_config = {
+						common : {		//此处放置通用设置
+							bdText : '自定义分享内容',	
+							bdDesc : '自定义分享摘要',	
+							bdUrl : '自定义分享url地址', 	
+							bdPic : '自定义分享图片'
+						},
+						share : [{		//此处放置分享按钮设置
+							"bdSize" : 16
+						}],
+						slide : [{	  	//此处放置浮窗分享设置
+							bdImg : 0,
+							bdPos : "right",
+							bdTop : 100
+						}],
+						image : [{		//此处放置图片分享设置
+// 							tag ： 'baiduShare',
+							viewType : 'list',
+							viewPos : 'top',
+							viewColor : 'black',
+							viewSize : '16',
+							viewList : ["qzone","tsina","tqq","renren","weixin","huaban","mail","youdao"]
+						}],
+						selectShare : [{	//此处放置划词分享设置
+							"bdContainerClass":null,
+							"bdselectMiniList" : ["qzone","tsina","tqq","renren","weixin","huaban","mail","youdao"]
+						}]
+					}
+					with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];						
+				</script>
+			</div>
+		</div>
+		
+		<!-- class="BSHARE_IMAGE_CLASS"设置bShare只对该div类的img标签添加图片分享功能 -->
+		<div class="BSHARE_IMAGE_CLASS">
+			<div class="tit">2）、bShare分享</div>
+			<div>
+				<!-- 
+					1）、class="BSHARE_IMAGE"设置bShare只对拥有该class属性的img标签添加图片分享功能
+					2）、class="BSHARE_IMAGE_NO"设置bShare只对拥有该class属性的img标签添加图片分享功能
+				 -->
+				<img src="incoming/shuangjiegun.jpg" class="photo BSHARE_IMAGE"/><br/>
+				<img src="incoming/Zhuoku189.jpg" class="photo BSHARE_IMAGE_NO"/>
+			</div>
+			<div>
+				<div class="bshare-custom">
+					<a title="分享到QQ空间" class="bshare-qzone"></a>
+					<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+					<a title="分享到人人网" class="bshare-renren"></a>
+					<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+					<a title="分享到网易微博" class="bshare-neteasemb"></a>
+					<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+					<span class="BSHARE_COUNT bshare-share-count">0</span>
+				</div>
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+				
+				<!-- 图片分享；其中参数uuid可以去bShare网站注册并创建网站，得到对应的UUID以便开始追踪数据。如果您不需要追踪数据，也可以将uuid设置为空 -->
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#uuid=''&style=-1"></script>
+				<!-- 参数说明：
+					1、shareClass参数：(筛选需要分享的图片)
+						1）值BSHARE_IMAGE_ALL：表示对所有图片都绑定bShare分享功能；
+						2）值BSHARE_IMAGE：表示只对有用该class属性值的img标签绑定bShare分享功能
+					2、可通过在div中加class="BSHARE_IMAGE_CLASS"来指定只对改div中的img标签绑定bShare图片分享功能
+					3、noShareClass参数：(筛选不需要分享的图片)
+						1）值BSHARE_IMAGE_NO：表示对有用该class属性值的img标签不绑定bShare分享功能
+					具体参数说明，详见：http://www.bshare.cn/help/installImage -->
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/addons/bshareMM.js#bgColor=#f60&txtColor=#fff&text=分享图片&shareClass=BSHARE_IMAGE_ALL&noShareClass=BSHARE_IMAGE_NO&minHeight=50&minWidth=50"></script>
+			</div>
+		</div>
+			
 	</div>
 </body>
 </html>
